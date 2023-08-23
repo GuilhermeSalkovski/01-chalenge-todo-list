@@ -18,15 +18,17 @@
     padding: 1rem;
 }
 
-.taskBar button {
+.taskBar button[type='submit'] {
     color: var(--white);
     background: var(--bluedark);
 
+    font-weight: bold;
+
     border: 0;
     border-radius: 8px;
+    cursor: pointer;
 }
 
-.taskBar button strong {
-    padding-right: 0.5rem;
-
+.taskBar button[type='submit']:disabled {
+    cursor: not-allowed;
 }
