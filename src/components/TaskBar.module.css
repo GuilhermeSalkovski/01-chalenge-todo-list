@@ -1,0 +1,32 @@
+.taskBar {
+    display: grid;
+    grid-template-columns: 638px 90px;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: calc(0px - 1.5rem - 3px);
+}
+
+.taskBar textarea {
+    color: var(--gray-300);
+    background: var(--gray-500);
+
+    height: 3.375rem;
+    resize: none;
+    width: 100%;
+    border: 0;
+    border-radius: 4px;
+    padding: 1rem;
+}
+
+.taskBar button {
+    color: var(--white);
+    background: var(--bluedark);
+
+    border: 0;
+    border-radius: 8px;
+}
+
+.taskBar button strong {
+    padding-right: 0.5rem;
+
+}
