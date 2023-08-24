@@ -3,12 +3,42 @@ import { useState } from 'react';
 import clipboard from '../assets/Clipboard.svg'
 
 import styles from './TaskList.module.css';
+import { Task } from './Task';
 
 export function TaskList(){
-    const [createdTasks, setCreatedTasks] = useState(0)
+    const tasks = [{
+            isCompleted: false,
+            taskContent: `Lorem Ipsum is simply dummy text of the printing and
+                typesetting industry. Lorem Ipsum has been the industry's standard
+                dummy text ever since the 1500s`,
+        },
+        {
+            isCompleted: true,
+            taskContent: `It has survived not only five centuries, but also the leap
+                into electronic typesetting, remaining essentially unchanged.`
+        },
+        {
+            isCompleted: false,
+            taskContent: `It was popularised in the 1960s with the release of
+                Letraset sheets containing Lorem Ipsum passages, and more recently
+                with desktop publishing software like Aldus PageMaker including
+                versions of Lorem Ipsum`,
+        },
+    ]
+
+    const [createdTasks, setCreatedTasks] = useState(1)
     const [finishedTasks, setFinishedTasks] = useState(0)
 
     const noTasksToDisplay = (createdTasks === 0) && (finishedTasks === 0)
+
+
+
+    tasks.map((task) => {
+        const completedTasks = []
+        if(task.isCompleted)
+            completedTasks.push(task)
+        return completedTasks
+    })
 
     if (noTasksToDisplay) {
         return(
@@ -52,6 +82,7 @@ export function TaskList(){
 
                 <div className={styles.tasksItems}>
                     Muitas tarefas para serem feitas aqui
+                    < Task isCompleted={true} taskContent={'Hello World. This is the new task'}/>
                 </div>
 
             </div>
