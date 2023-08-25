@@ -83,6 +83,8 @@ export function TaskList(){
                 <div className={styles.tasksItems}>
                     Muitas tarefas para serem feitas aqui
                     < Task isCompleted={true} taskContent={'Hello World. This is the new task'}/>
+                    < Task isCompleted={false} taskContent={'Olá mundo. Essa é uma nova tarefa'}/>
+                    < Task isCompleted={true} taskContent={'Hola mundo. Esta es la nueva tarea'}/>
                 </div>
 
             </div>
