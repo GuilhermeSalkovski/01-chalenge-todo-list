@@ -33,6 +33,7 @@ export function TaskList() {
         })
 
         setTasks(tasksWithoutDeletedOne)
+        setCreatedTasks(tasksWithoutDeletedOne.length)
     }
 
 

@@ -7,10 +7,6 @@ interface TaskProps {
     onDeleteTask: (task: string) => void;
 }
 
-function handleDeleteTask() {
-    console.log('Tarefa deletada')
-}
-
 export function Task({isCompleted, taskContent, onDeleteTask}: TaskProps) {
     function handleDeleteTask() {
         onDeleteTask(taskContent)

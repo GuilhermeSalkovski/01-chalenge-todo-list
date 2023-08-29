@@ -33,7 +33,6 @@
 .taskContent {
     display: flex;
     gap: 1rem;
-    /* align-items: center; */
 }
 
 .taskContent input[type='checkbox'] {
@@ -48,6 +47,11 @@
     margin-left: 1rem;
 
     appearance: none;
+}
+
+.taskContent input[type='checkbox']:hover {
+    cursor: pointer;
+    background-color: var(--bluedark);
 }
 
 .taskContent input[type='checkbox']:checked {
