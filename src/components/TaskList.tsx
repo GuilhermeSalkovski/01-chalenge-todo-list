@@ -6,7 +6,7 @@ import clipboard from '../assets/Clipboard.svg'
 
 
 export function TaskList() {
-    const tasks = [{
+    const [tasks, setTasks] =  useState([{
             isCompleted: false,
             taskContent: `Lorem Ipsum is simply dummy text of the printing and
                 typesetting industry.`,
@@ -20,12 +20,20 @@ export function TaskList() {
             taskContent: `It was popularised in the 1960s with the release of
                 Letraset sheets containing Lorem Ipsum passages.`,
         },
-    ]
+    ])
 
     const [createdTasks, setCreatedTasks] = useState(tasks.length)
     const [finishedTasks, setFinishedTasks] = useState(0)
 
-    const noTasksToDisplay = (createdTasks === 0) && (finishedTasks === 0)
+    const noTasksToDisplay = (createdTasks === 0)
+
+    function deleteTask(taskToDelete: string) {
+        const tasksWithoutDeletedOne = tasks.filter(task => {
+            return task.taskContent !== taskToDelete;
+        })
+
+        setTasks(tasksWithoutDeletedOne)
+    }
 
 
     if (noTasksToDisplay) {
@@ -70,13 +78,13 @@ export function TaskList() {
 
                 <div className={styles.tasksItems}>
                     {tasks.map(task => {
-                        return <Task isCompleted={task.isCompleted} taskContent={task.taskContent}/>
+                        return <Task
+                                isCompleted={task.isCompleted}
+                                taskContent={task.taskContent}
+                                onDeleteTask={deleteTask}
+                            />
                         }
                     )}
-
-                    {/* < Task isCompleted={true} taskContent={'Hello World. This is the new task'}/>
-                    < Task isCompleted={false} taskContent={'Olá mundo. Essa é uma nova tarefa'}/>
-                    < Task isCompleted={true} taskContent={'Hola mundo. Esta es la nueva tarea'}/> */}
                 </div>
 
             </div>

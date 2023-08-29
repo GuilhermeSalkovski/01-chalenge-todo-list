@@ -38,7 +38,7 @@ export function TaskBar() {
                 type='submit'
                 disabled={isNewTaskEmpty}
             >
-                Criar < PlusCircle size={24} />
+                Criar < PlusCircle size={20} />
             </button>
         </form>
     )
