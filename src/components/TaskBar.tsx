@@ -4,29 +4,29 @@ import { ChangeEvent, FormEvent, InvalidEvent, useEffect, useState } from 'react
 import stylesList from './TaskList.module.css';
 import stylesTask from './Task.module.css'
 import clipboard from '../assets/Clipboard.svg'
-// import { Task } from './Task';
-
 
 export function TaskBar() {
-    const [tasks, setTasks] =  useState([{
-            id: 1,
-            isCompleted: false,
-            taskContent: `Em pé sem cair, deitado sem dormir, sentado sem
-                cochilar e fazendo pose.`,
-        },
-        {
-            id: 2,
-            isCompleted: true,
-            taskContent: `Quem num gosta di mim que vai caçá sua turmis! Todo
-                mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!`
-        },
-        {
-            id: 3,
-            isCompleted: false,
-            taskContent: `Copo furadis é disculpa de bebadis, arcu quam euismod
-                magna. Per aumento de cachacis, eu reclamis.`,
-        },
+    const [tasks, setTasks] =  useState([
+        // {
+        //     id: 1,
+        //     isCompleted: false,
+        //     taskContent: `Em pé sem cair, deitado sem dormir, sentado sem
+        //         cochilar e fazendo pose.`,
+        // },
+        // {
+        //     id: 2,
+        //     isCompleted: true,
+        //     taskContent: `Quem num gosta di mim que vai caçá sua turmis! Todo
+        //         mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!`
+        // },
+        // {
+        //     id: 3,
+        //     isCompleted: false,
+        //     taskContent: `Copo furadis é disculpa de bebadis, arcu quam euismod
+        //         magna. Per aumento de cachacis, eu reclamis.`,
+        // },
     ])
+
     const taskListSize = Object.keys(tasks).length
     console.log({
         taskListSize
@@ -59,10 +59,31 @@ export function TaskBar() {
             onDeleteTask(id)
         }
 
+        function handleCompleteTask() {
+            console.log('Task completed')
+            // update task list
+            const updatedTaskList = tasks.map(task => {
+                if (task.id === id) {
+                    task.isCompleted = !task.isCompleted
+                }
+                return task
+            })
+            setTasks(updatedTaskList)
+
+            // update finished task counter
+            let finishedTasks = 0
+            updatedTaskList.forEach(task => {
+                if (task.isCompleted) {
+                    finishedTasks++
+                }
+            })
+            setFinishedTasksCounter(finishedTasks)
+        }
+
         return(
             <div className={stylesTask.task} >
-                <div className={stylesTask.taskContent}>
-                    <input type="checkbox" id='task' checked={isCompleted} />
+                <div className={isCompleted? stylesTask.taskCompleted : stylesTask.taskContent}>
+                    <input type="checkbox" id='task' checked={isCompleted} onChange={(handleCompleteTask)} />
                     <label htmlFor='task'>{taskContent}</label>
                 </div>
                 <button onClick={handleDeleteTask} title="Deletar uma tarefa">

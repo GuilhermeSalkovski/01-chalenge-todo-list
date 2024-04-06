@@ -31,6 +31,40 @@
     color: var(--danger);
 }
 
+.taskCompleted {
+    display: flex;
+    gap: 1rem;
+
+    color: var(--gray-300);
+    text-decoration: line-through
+}
+
+.taskCompleted input[type='checkbox'] {
+    border: 2px solid var(--bluedark);
+    border-radius: 50%;
+
+    width: 1rem;
+    height: 1rem;
+    min-width: 1rem;
+    min-height: 1rem;
+    vertical-align: middle;
+    margin-left: 1rem;
+    appearance: none;
+}
+
+.taskCompleted input[type='checkbox']:hover {
+    cursor: pointer;
+    background-color: var(--bluedark);
+
+}
+
+.taskCompleted input[type='checkbox']:checked {
+    appearance: auto;
+    accent-color: var(--purple);
+    clip-path: circle(50% at 50% 50%);
+    background-color: var(--purple);
+}
+
 .taskContent {
     display: flex;
     gap: 1rem;
@@ -53,11 +87,4 @@
 .taskContent input[type='checkbox']:hover {
     cursor: pointer;
     background-color: var(--bluedark);
-}
-
-.taskContent input[type='checkbox']:checked {
-    appearance: auto;
-    accent-color: var(--purple);
-    clip-path: circle(50% at 50% 50%);
-    background-color: var(--purple);
 }
